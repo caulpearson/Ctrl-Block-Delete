@@ -1,3 +1,40 @@
-<a routerLink="">feed</a>
-<a routerLink="sign-in">sign-in</a>
-<a routerLink="post">post</a>
+<div class="container mx-auto p-6">
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl">ShareTable</h1>
+      <nav *ngIf="this.loggedIn == true" class="mt-4">
+        <a class="mr-4" routerLink="/feed">Feed</a>
+        <a class="mr-4" routerLink="/post">Post</a>
+      </nav>
+    </header>
+
+<ng-container *ngIf="this.loggedIn == false">
+    <div>
+        <div class="container mx-auto p-6">
+            <h2 class="text-2xl mb-4">Login</h2>
+            <form [formGroup]="loginForm">
+              <div class="mb-4">
+                <label for="username" class="block text-sm font-medium">Username</label>
+                <input type="text" id="username" formControlName="username" class="mt-1 p-2 w-full border rounded-md" (input)="this.onChange()">
+              </div>
+              <div class="mb-4">
+                <label for="password" class="block text-sm font-medium">Password</label>
+                <input type="password" id="password" formControlName="password" class="mt-1 p-2 w-full border rounded-md">
+              </div>
+              <button (click)="this.onSubmit()" type="submit" class="bg-blue-500 text-white p-2 rounded-md">Login</button>
+            </form>
+          </div>
+    </div>
+</ng-container>
+  
+    <!-- Main Content -->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  
+    <!-- Footer -->
+    <footer class="mt-6">
+      <p>&copy; 2023 ShareTable - Food Donation Initiative. All Rights Reserved.</p>
+    </footer>
+  </div>
+  

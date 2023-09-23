@@ -1,6 +1,67 @@
+<!DOCTYPE html>
+<head>
+    Header
+</head>
+<body>
+    <h1>Create Post</h1>
 
+    <div>
+        <Label>Location same as primary address?</Label>
+        <br>
+        <label>Yes</label><input type="radio" name="location" value="Yes">
+        <label>No</label><input type="radio" name="location" value="No">
 
-Create post
+        <div>
+            <h3>Pickup Address</h3>
+            <input type="text" placeholder="Address Line 1" name="address_1">
+            <input type="text" placeholder="Address Line 2" name="address_2"><br>
+            <input type="text" placeholder="City" name="city">
+            <select name="state" id="state_province">
+                <option value="mo">MO</option>
+                <option value="ks">KS</option>
+            </select>
+            <input type="text" placeholder="Zipcode" name="zip"><br>
+        </div>
+    </div>
 
-Author
+    <div>
+        <h3>Post Details</h3>
+        <label>Text: </label>
+        <input type="text" placeholder="Enter a description..." name="text">
+        <br>
 
+        <label>Image: </label>
+        <input type="text" placeholder="Enter an image description..." name="image">
+        <br>
+    </div>
+
+    <div>
+        <h3>Type of food</h3>
+        <label>Baked Goods</label><input type="checkbox" id="baked_goods_box" value="baked_goods"><br>
+        <label>Produce</label><input type="checkbox" id="produce_box" value="produce"><br>
+        <label>Prepared Foods</label><input type="checkbox" id="prepared_box" value="prepared"><br>
+    </div>
+
+    <div>
+        <h3>Amount of food: </h3>
+        <input type="number" id="food_quantity">
+        <select name="unit" id="food_unit">
+            <option value="individual">Individual</option>
+            <option value="lbs">Lbs.</option>
+            <option value="dozen">Dozen</option>
+        </select>
+    </div>
+        
+    <div>
+        <h3>Restrictions</h3>
+        <label>Vegetarian</label><input type="checkbox" id="vegetarian_box" value="vegetarian"><br>
+        <label>Vegan</label><input type="checkbox" id="vegan_box" value="vegan"><br>
+        <label>Halal</label><input type="checkbox" id="halal_box" value="halal"><br>
+        <label>Kosher</label><input type="checkbox" id="kosher_box" value="kosher"><br>
+    </div>
+
+    <div>
+        <h3>Post</h3>
+        <input type="submit" id="submit" value="Post">
+    </div>
+</body>

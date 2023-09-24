@@ -2,17 +2,15 @@
 <div id="intro" class="p-5 text-center bg-light">
     <h1 class="mb-3 h2">Share a Table with Us</h1>
     <p class="mb-3">Become a donor, and change someone's life</p>
-    <a class="btn btn-primary m-2" routerLink="/feed" role="button" rel="nofollow"
-       target="_blank">Check out Listings</a>
-    <a class="btn btn-primary m-2" href="" target="_blank"
-       role="button">About our Mission</a>
+    <a class="btn btn-primary m-2" routerLink="/feed" role="button" >Check out Listings</a>
+    <a class="btn btn-primary m-2" href="" role="button">About our Mission</a>
   </div>
   <!-- Jumbotron -->
 
   <!-- Post Template -->
   <div class="container mt-4">
     <h1>Create Post</h1>
-    
+
     <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
         <div class="card mb-4 p-3">
@@ -59,7 +57,7 @@
     </form>
 </div>
 <!-- Post Template -->
-  
+
 
 <!-- Modal -->
 <div *ngIf="showModal" class="modal show d-block" tabindex="-1">
@@ -75,51 +73,9 @@
           Thank you for your generous donation! Your contribution will make a difference in someone's life.
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="toggleModal(); $event.stopPropagation();">Close</button>                                   
+            <button type="button" class="btn btn-primary" (click)="toggleModal(); $event.stopPropagation();">Close</button>
         </div>
       </div>
     </div>
   </div>
   <div *ngIf="showModal" class="modal-backdrop fade show"></div>
-  
-  
-=======
-<!DOCTYPE html>
-<head>
-    <Title>Post Form</Title>>
-</head>
-
-
-  <body>
-    <form [formGroup]="postForm">
-      <div class="container">
-        <div class="card bg-dark text-white mb-4" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center mb-4">
-            <h2>Post Details</h2>
-              <div>
-                <textarea class="form-control form-control-lg" rows="4" formControlName="textForm" placeholder="Description, pickup details, etc." name="text"></textarea>
-                <label class="custom-control-label"></label>
-                <div class="row">
-                  <div class="col-sm">
-                    <input class="form-control form-control-lg" type="file" id="formFileMultiple" multiple />
-                  </div>
-                  <div class="col-sm">
-                    <select class="custom-select d-block w-100 form-control-lg" required="" formControlName="typeBox">
-                      <option disabled="disabled" value="">Restriction</option>
-                      <option>Barbeque</option>
-                      <option>Deli</option>
-                      <option>Bakery</option>
-                      <option>Produce</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-                <div>
-                  <br>
-                  <label class="custom-control-label"></label>
-                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Post" (click)="this.onSubmit()">
-              </div>
-          </div>
-      </div>
-  </div>
-</form>

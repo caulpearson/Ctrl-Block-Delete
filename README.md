@@ -16,7 +16,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 
 1.   **Full Name**  || **fullname@company.com**  (or fullname@school.edu if you're a CS student) || **Github Username**
 2. Shailynn Hacker || shailynn.hacker@hrblock.com || AreceliEos
-3.
+3. Mason Harper    || mason.harper@hrblock.com    || HarperM164
 4.
 5.
 

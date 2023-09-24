@@ -21,18 +21,20 @@ export class FeedComponent implements OnInit {
     var unclaimed = await this.getUnclaimed() as UnclaimedPostModel[];
     console.log(unclaimed);
 
-    this.newsItems.push({
-      category: 'Bakery',
-      categoryColor: 'text-info',
-      title: 'Baked Daily, Available for All',
-      description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
-      date: '09.24.2023',
-      imageUrl: '/assets/logos/bagels_01.png',
-      profileImage: '/assets/logos/bakery_logo.png',
-      profileName: 'B.B Bakery',
-    })
-
-    
+    unclaimed.forEach(element => {
+      this.newsItems.push(
+        {id: 0,
+        claimed: false,
+        category: element.type,
+        categoryColor: 'text-info',
+        title: 'Free Food',
+        description: element.text,
+        date: element.time.toString(),
+        imageUrl: element.foodTypePictureUrl,
+        profileImage: element.profilePictureUrl,
+        profileName: element.author
+        })
+    });
 
 
   }

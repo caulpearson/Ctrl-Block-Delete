@@ -29,11 +29,7 @@ export class PostComponent implements OnInit {
   postForm = this.formBuilder.group({
     textForm: this.formBuilder.control(''),
     imageForm: this.formBuilder.control(''),
-    typeBox: this.formBuilder.control(''),
-    vegetarianBox: this.formBuilder.control(''),
-    bbqBox: this.formBuilder.control(''),
-    deliBox: this.formBuilder.control(''),
-    bakeryBox: this.formBuilder.control('')
+    type: this.formBuilder.control('')
   })
 
   toggleModal() {
@@ -43,11 +39,9 @@ export class PostComponent implements OnInit {
 
   onSubmit() {
 
-    console.log(this.userName);
-
     var text = this.postForm.controls['textForm'].value;
     var image = this.postForm.controls['imageForm'].value;
-    var type = this.postForm.controls['typeBox'].value;
+    var type = this.postForm.controls['type'].value;
     var date = new Date().toUTCString();
     var profilePicture = this.getProfilePicture();
     var zipcode = this.getZipCode();

@@ -17,7 +17,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 1. Bryn Smith || bryn.smith@hrblock.com || BrynSmith10
 2. Shailynn Hacker || shailynn.hacker@hrblock.com || AreceliEos
 3. Mason Harper    || mason.harper@hrblock.com    || HarperM164
-4. Caulfield Pearson || caulfield.pearson || caulpearson
+4. Caulfield Pearson || caulfield.pearson@hrblock.com || caulpearson
 5.
 
 <br /><br />

@@ -18,8 +18,8 @@ export class FeedComponent implements OnInit {
   showButton = false;
 
   ngOnInit(): void {
-    var val = JSON.parse(this.getUnclaimed()) as UnclaimedPostModel;
-    console.log(val);
+    //var val = JSON.parse(this.getUnclaimed()) as UnclaimedPostModel;
+    //console.log(val);
   }
 
 

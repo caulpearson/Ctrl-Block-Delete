@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    console.log(this.loginForm.controls['username'].value);
-    console.log(this.loginForm.controls['password'].value);
   }
 
   username!: any;
@@ -27,10 +25,6 @@ export class AppComponent implements OnInit {
     username: this.formBuilder.control(''),
     password: this.formBuilder.control('')
   })
-
-  onChange() {
-    console.log(this.loginForm.controls['username'].value)
-  }
 
   signOut() {
     this.username = null;

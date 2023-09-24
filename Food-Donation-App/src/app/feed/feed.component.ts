@@ -17,19 +17,30 @@ export class FeedComponent implements OnInit {
 
   showButton = false;
 
-  ngOnInit(): void {
-    //var val = JSON.parse(this.getUnclaimed()) as UnclaimedPostModel;
-    //console.log(val);
+  async ngOnInit(): Promise<void> {
+    var unclaimed = await this.getUnclaimed() as UnclaimedPostModel[];
+    console.log(unclaimed);
+
+    this.newsItems.push({
+      category: 'Bakery',
+      categoryColor: 'text-info',
+      title: 'Baked Daily, Available for All',
+      description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
+      date: '09.24.2023',
+      imageUrl: '/assets/logos/bagels_01.png',
+      profileImage: '/assets/logos/bakery_logo.png',
+      profileName: 'B.B Bakery',
+    })
+
+    
+
+
   }
 
 
-  getUnclaimed () : Object {
+  async getUnclaimed () : Promise<any> {
     
-    var val = this.http.get(this.getURL);
-
-    
-
-    return val;
+    return await this.http.get(this.getURL).toPromise() as Promise<any>;
   }
 
 

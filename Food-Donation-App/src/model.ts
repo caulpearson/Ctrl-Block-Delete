@@ -1,11 +1,10 @@
-export interface Post {
-  Time: string; // You may want to use a Date type if it's a timestamp
-  Author: string;
-  Type: string;
-  Text: string;
-  ZipCode: string;
-  ProfilePictureUrl: string;
-  FoodTypePictureURL: string;
+export interface PostModel {
+  time: Date;
+  author: string;
+  type: string;
+  text: string;
+  zipCode: number;
+  claimant: number;
 }
 
 export interface UnclaimedPostModel {
@@ -17,4 +16,3 @@ export interface UnclaimedPostModel {
   profilePictureUrl: string;
   foodTypePictureUrl: string;
 }
-

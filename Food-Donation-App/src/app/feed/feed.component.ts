@@ -11,6 +11,8 @@ export class FeedComponent {
 
   newsItems = [
     {
+      id: 0,
+      claimed: false,
       category: 'Bakery',
       categoryColor: 'text-info',
       title: 'Baked Daily, Available for All',
@@ -21,6 +23,8 @@ export class FeedComponent {
       profileName: 'B.B Bakery',
     },
     {
+      id: 0,
+      claimed: false,
       category: 'Deli',
       categoryColor: 'text-info',
       title: 'Gourmet Donations for the Community',
@@ -31,6 +35,8 @@ export class FeedComponent {
       profileName: 'DnD Deli',
     },
     {
+      id: 0,
+      claimed: false,
       category: 'Vegetarian',
       categoryColor: 'text-info',
       title: 'From our Farms, with Love',
@@ -41,6 +47,8 @@ export class FeedComponent {
       profileName: 'The Greenhouse',
     },
     {
+      id: 0,
+      claimed: false,
       category: 'BBQ',
       categoryColor: 'text-info',
       title: 'Grilled with Care, Shared with Love',
@@ -52,4 +60,13 @@ export class FeedComponent {
     },
     // ... other news items
   ];
+  
+  lastAssignedId: number = 0;
+
+  claimItem(item: any): void {
+    item.claimed = true;
+    this.lastAssignedId++;
+    item.id = this.lastAssignedId;
+  }
+
 }

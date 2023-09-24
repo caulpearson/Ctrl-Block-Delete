@@ -14,10 +14,10 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 ## Who's on your team?
 *List the full names,  email address & Github username of your teammates*
 
-1.   **Full Name**  || **fullname@company.com**  (or fullname@school.edu if you're a CS student) || **Github Username**
+1. Bryn Smith || bryn.smith@hrblock.com || BrynSmith10
 2. Shailynn Hacker || shailynn.hacker@hrblock.com || AreceliEos
 3. Mason Harper    || mason.harper@hrblock.com    || HarperM164
-4.
+4. Caulfield Pearson || caulfield.pearson || caulpearson
 5.
 
 <br /><br />
@@ -27,7 +27,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 ShareTable
 <br /><br />
 ## What does your app do?
-ShareTable serves as a bridge between businesses with surplus food and individuals facing food scarcity. Designed with an intuitive interface, businesses can effortlessly create donation posts to offer excess food items, ensuring they don't go to waste. Users can browse the feed, filled with vibrant images and descriptions, to find available donations nearby. With features like category filtering and direct contact options, connecting donors and recipients has never been easier. The platform not only aids in reducing food wastage but also plays a pivotal role in supporting community members in need.
+ShareTable serves as a bridge between businesses with surplus food and individuals facing food scarcity. Designed with an intuitive interface, businesses can effortlessly create donation posts to offer excess food items, ensuring they don't go to waste. Users can browse the feed, filled with vibrant images and descriptions, to find available donations nearby. With features like category filtering and contact options, connecting donors and recipients has never been easier. The platform not only aids in reducing food wastage but also plays a pivotal role in supporting community members in need.
 
 <br /><br />
 

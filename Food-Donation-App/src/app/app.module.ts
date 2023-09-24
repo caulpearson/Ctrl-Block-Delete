@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeedComponent } from './feed/feed.component';
 import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { PostComponent } from './post/post.component';
     PostComponent
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

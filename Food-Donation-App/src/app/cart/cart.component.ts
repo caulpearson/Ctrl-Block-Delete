@@ -31,7 +31,6 @@ export class CartComponent implements OnInit{
   newsItems = [
     {
       category: 'Bakery',
-      categoryIcon: 'fas fa-plane',
       categoryColor: 'text-info',
       title: 'Baked Daily, Available for All',
       description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
@@ -41,5 +40,5 @@ export class CartComponent implements OnInit{
       profileName: 'B.B Bakery',
     }
   ]
-  
+
 }

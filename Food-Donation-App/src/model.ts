@@ -1,11 +1,9 @@
-export interface PostModel {
-  Id: number,
-  Time: Date,
-  Author: string,
-  Text: string,
-  ProfilePicture: string,
-  Image: string,
-  DistanceAway: string,
-  ZipCode: number,
-  Decision: number
+export interface Post {
+  Time: string; // You may want to use a Date type if it's a timestamp
+  Author: string;
+  Type: string;
+  Text: string;
+  ZipCode: string;
+  ProfilePictureUrl: string;
+  FoodTypePictureURL: string;
 }

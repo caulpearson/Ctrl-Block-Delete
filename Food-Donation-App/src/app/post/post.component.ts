@@ -29,25 +29,18 @@ export class PostComponent implements OnInit {
   postForm = this.formBuilder.group({
     textForm: this.formBuilder.control(''),
     imageForm: this.formBuilder.control(''),
-    typeBox: this.formBuilder.control(''),
-    vegetarianBox: this.formBuilder.control(''),
-    bbqBox: this.formBuilder.control(''),
-    deliBox: this.formBuilder.control(''),
-    bakeryBox: this.formBuilder.control('')
+    type: this.formBuilder.control('')
   })
 
   toggleModal() {
-    console.log("Toggling modal"); // Log to check if the function is called
     this.showModal = !this.showModal;
   }
 
   onSubmit() {
 
-    console.log(this.userName);
-
     var text = this.postForm.controls['textForm'].value;
     var image = this.postForm.controls['imageForm'].value;
-    var type = this.postForm.controls['typeBox'].value;
+    var type = this.postForm.controls['type'].value;
     var date = new Date().toUTCString();
     var profilePicture = this.getProfilePicture();
     var zipcode = this.getZipCode();
@@ -57,6 +50,8 @@ export class PostComponent implements OnInit {
     const body = "{\"time\": \"" + date + "\",\"author\": \"" + this.userName + "\",\"type\": \"" + type + "\",\"text\": \"" + text + "\",\"profilePicture\": \"string\",\"image\": \"" + image + "\",\"zipCode\": 0,\"claimant\": 0}";
     console.log(body);
     //return this.http.post(this.url + 'people', body,{'headers':headers})
+
+
   }
 
   getProfilePicture() {

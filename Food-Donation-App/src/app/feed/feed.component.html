@@ -13,7 +13,8 @@
   <div class="container">
     <section>
       <div class="row gx-lg-5">
-        <div *ngFor="let item of newsItems" class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+        <ng-container *ngFor="let item of newsItems">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" *ngIf="!item.claimed">
           <!-- News block -->
           <div>
             <!-- Featured image -->
@@ -24,6 +25,7 @@
 
               <!-- Hover button -->
               <button class="interest-button btn btn-dark position-absolute top-50 start-50 translate-middle"
+                      (click)="claimItem(item)"
                       (mouseover)="showButton = true"
                       (mouseleave)="showButton = false">
                 Claim Item
@@ -60,7 +62,8 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
+        </ng-container>
       </div>
     </section>
 

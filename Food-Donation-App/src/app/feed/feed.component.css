@@ -11,4 +11,15 @@
   .image:hover .mask {
     cursor: pointer;  /* To show the hand cursor indicating clickable action */
   }
+
+  /* Hide the button by default */
+.interest-button {
+  display: none;
+}
+
+/* Show the button when the parent is hovered */
+.image:hover .interest-button {
+  display: block;
+}
+
   

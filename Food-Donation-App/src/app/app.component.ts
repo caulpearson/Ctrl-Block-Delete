@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from './post/login.service';
+import { LoginModel } from 'src/model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +13,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Food-Donation-App';
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private login:LoginService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +21,7 @@ export class AppComponent implements OnInit {
   username!: any;
   password!: any;
   id!: number;
+  pictureUrl!: string;
   loggedIn: boolean = false;
 
 
@@ -36,7 +40,7 @@ export class AppComponent implements OnInit {
     this.loggedIn = false;
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.username = this.loginForm.controls['username'].value;
 
     this.password = this.loginForm.controls['password'].value;
@@ -52,6 +56,16 @@ export class AppComponent implements OnInit {
 
       // Navigate to home after successful login
       this.loggedIn = true;
+
+      var response = await this.login.login(this.username, this.password) as LoginModel;
+
+      this.id = response.id;
+      this.pictureUrl = response.pictureUrl;
+
+      console.log(response);
+
+      console.log(this.id);
+      console.log(this.pictureUrl);
 
       this.router.navigateByUrl('/feed');
     }

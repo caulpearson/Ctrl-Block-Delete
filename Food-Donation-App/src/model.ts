@@ -16,3 +16,10 @@ export interface UnclaimedPostModel {
   profilePictureUrl: string;
   foodTypePictureUrl: string;
 }
+
+
+export interface LoginModel {
+  id: number;
+  name: string;
+  pictureUrl: string;
+}

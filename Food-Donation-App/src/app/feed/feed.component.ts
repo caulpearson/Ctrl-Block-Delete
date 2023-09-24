@@ -1,4 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { UnclaimedPostModel } from 'src/model';
 
 @Component({
   selector: 'app-feed',
@@ -6,8 +9,29 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./feed.component.css']
 })
 
-export class FeedComponent {
+export class FeedComponent implements OnInit {
+
+  constructor(private http:HttpClient) {}
+
+  getURL: string = "https://fooddonationapi.azurewebsites.net/UnclaimedPosts";
+
   showButton = false;
+
+  ngOnInit(): void {
+    //var val = JSON.parse(this.getUnclaimed()) as UnclaimedPostModel;
+    //console.log(val);
+  }
+
+
+  getUnclaimed () : Object {
+    
+    var val = this.http.get(this.getURL);
+
+    
+
+    return val;
+  }
+
 
   newsItems = [
     {

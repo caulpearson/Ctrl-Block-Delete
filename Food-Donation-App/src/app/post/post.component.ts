@@ -19,11 +19,16 @@ export class PostComponent implements OnInit {
   }
 
   userName!: string;
+  id!: number;
+  pictureUrl!: string;
+
 
   showModal: boolean = false;
 
   ngOnInit(): void {
     this.userName = this.appComponent.username;
+    this.id = this.appComponent.id;
+    this.pictureUrl = this.appComponent.pictureUrl;
   }
 
   postForm = this.formBuilder.group({
@@ -41,17 +46,15 @@ export class PostComponent implements OnInit {
     var text = this.postForm.controls['textForm'].value;
     var image = this.postForm.controls['imageForm'].value;
     var type = this.postForm.controls['type'].value;
-    var date = new Date().toUTCString();
+    var date = '2023-09-24T12:35:32.679Z';
     var profilePicture = this.getProfilePicture();
     var zipcode = this.getZipCode();
 
     const headers = {'content-type': 'application/json'}
-    //const body=JSON.stringify(this.postForm.controls['textForm'].value);
-    const body = "{\"time\": \"" + date + "\",\"author\": \"" + this.userName + "\",\"type\": \"" + type + "\",\"text\": \"" + text + "\",\"profilePicture\": \"string\",\"image\": \"" + image + "\",\"zipCode\": 0,\"claimant\": 0}";
+    const body = "{\"time\": \""+ date +"\",\"author\": \""+ this.userName + "\",\"type\": \""+ type +"\",\"text\": \""+ text +"\",\"zipCode\": 64017,\"claimant\": -1}"
     console.log(body);
-    //return this.http.post(this.url + 'people', body,{'headers':headers})
-
-
+    
+    console.log(this.http.post(this.postURL, body,{ headers }));
   }
 
   getProfilePicture() {

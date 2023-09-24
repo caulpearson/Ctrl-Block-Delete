@@ -12,7 +12,6 @@ export class FeedComponent {
   newsItems = [
     {
       category: 'Bakery',
-      categoryIcon: 'fas fa-plane',
       categoryColor: 'text-info',
       title: 'Baked Daily, Available for All',
       description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
@@ -23,7 +22,6 @@ export class FeedComponent {
     },
     {
       category: 'Deli',
-      categoryIcon: 'fas fa-plane',
       categoryColor: 'text-info',
       title: 'Gourmet Donations for the Community',
       description: 'We are offering our deli surpluses to those in need. Join us at DnD Deli in this noble cause',
@@ -34,7 +32,6 @@ export class FeedComponent {
     },
     {
       category: 'Vegetarian',
-      categoryIcon: 'fas fa-plane',
       categoryColor: 'text-info',
       title: 'From our Farms, with Love',
       description: 'Our excess vegetables are fresh, organic, and ready for donation. Together, lets reduce hunger',
@@ -45,7 +42,6 @@ export class FeedComponent {
     },
     {
       category: 'BBQ',
-      categoryIcon: 'fas fa-plane',
       categoryColor: 'text-info',
       title: 'Grilled with Care, Shared with Love',
       description: 'We at BB Smokehouse are donating our BBQ leftovers. A little flavor can make a big difference',

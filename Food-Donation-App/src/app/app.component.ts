@@ -35,6 +35,10 @@ export class AppComponent implements OnInit {
   signOut() {
     this.username = null;
     this.password = null;
+
+    this.loginForm.controls['username'].reset();
+    this.loginForm.controls['password'].reset();
+
     this.loggedIn = false;
   }
 

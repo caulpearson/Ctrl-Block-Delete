@@ -10,9 +10,7 @@ import { AppComponent } from '../app.component';
 })
 export class CartComponent implements OnInit{
 
-  postURL: string = "https://fooddonationapi.azurewebsites.net/Post";
-  getByAuthorURL: string = "";
-
+  
   constructor(private formBuilder:FormBuilder, private http:HttpClient, private appComponent:AppComponent) {}
   userName!: string;
 
@@ -20,9 +18,10 @@ export class CartComponent implements OnInit{
   ngOnInit(): void {
     this.userName = this.appComponent.username;
 
-    var getURL = "";
+    var getURL = "https://fooddonationapi.azurewebsites.net/ClaimedPosts/" + 0;
 
     console.log(getURL);
+
 
     //this.http.get(getURL);
   }

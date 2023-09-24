@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from './post/login.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'Food-Donation-App';
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private login:LoginService) { }
 
   ngOnInit(): void {
     console.log(this.loginForm.controls['username'].value);
@@ -42,7 +44,7 @@ export class AppComponent implements OnInit {
     this.loggedIn = false;
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.username = this.loginForm.controls['username'].value;
 
     this.password = this.loginForm.controls['password'].value;
@@ -58,6 +60,9 @@ export class AppComponent implements OnInit {
 
       // Navigate to home after successful login
       this.loggedIn = true;
+
+      var response = await this.login.login(this.username, this.password);
+      console.log(response);
 
       this.router.navigateByUrl('/feed');
     }

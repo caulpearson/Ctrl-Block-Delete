@@ -47,8 +47,7 @@ export class PostComponent implements OnInit {
     var zipcode = this.getZipCode();
 
     const headers = {'content-type': 'application/json'}
-    //const body=JSON.stringify(this.postForm.controls['textForm'].value);
-    const body = "{\"time\": \"" + date + "\",\"author\": \"" + this.userName + "\",\"type\": \"" + type + "\",\"text\": \"" + text + "\",\"profilePicture\": \"string\",\"image\": \"" + image + "\",\"zipCode\": 0,\"claimant\": 0}";
+    const body = "{\"time\": \"" + date + "\",\"author\": \"" + this.userName + "\",\"type\": \"" + type + "\",\"text\": \"" + text + "\",\"profilePicture\": \"string\",\"image\": \"" + image + "\",\"zipCode\": 64017,\"claimant\": 0}";
     console.log(body);
     //return this.http.post(this.url + 'people', body,{'headers':headers})
   }

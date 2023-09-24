@@ -13,18 +13,12 @@ export class PostComponent {
   postForm = this.formBuilder.group({
     textForm: this.formBuilder.control(''),
     imageForm: this.formBuilder.control(''),
-    vegetarianBox: this.formBuilder.control(''),
-    veganBox: this.formBuilder.control(''),
-    halalBox: this.formBuilder.control(''),
-    kosherBox: this.formBuilder.control('')
+    restrictionBox: this.formBuilder.control('')
   })
 
   onSubmit() {
     console.log(this.postForm.controls['textForm'].value),
     console.log(this.postForm.controls['imageForm'].value),
-    console.log(this.postForm.controls['vegetarianBox'].value),
-    console.log(this.postForm.controls['veganBox'].value),
-    console.log(this.postForm.controls['halalBox'].value),
-    console.log(this.postForm.controls['kosherBox'].value)
+    console.log(this.postForm.controls['restrictionBox'].value)
   }
 }

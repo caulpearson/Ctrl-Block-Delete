@@ -68,4 +68,10 @@ export class PostComponent implements OnInit {
 
     return "";
   }
+
+  closeAndReset() {
+    this.toggleModal(); // Close the modal
+    this.postForm.reset(); // Reset the form
+  }
+  
 }

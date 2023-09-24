@@ -4,3 +4,5 @@ FoodDonationAPI/FoodDonationAPI/obj
 FoodDonationAPI/FoodDonationAPI/Properties/PublishProfiles
 FoodDonationAPI/FoodDonationAPI/Properties/ServiceDependencies/FoodDonationAPI - Web Deploy
 FoodDonationAPI/FoodDonationAPI/appsettings.json
+FoodDonationAPI/FoodDonationAPI/Properties/ServiceDependencies/FoodDonationAPI - Web Deploy1
+FoodDonationAPI/FoodDonationAPI/FoodDonationAPI.csproj.user

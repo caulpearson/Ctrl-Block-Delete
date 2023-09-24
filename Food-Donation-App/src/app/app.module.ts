@@ -15,10 +15,10 @@ import { ContactComponent } from './contact/contact.component';
   declarations: [
     AppComponent,
     FeedComponent,
-    PostComponent,
     CartComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    PostComponent
   ],
   imports: [
     HttpClientModule,
@@ -27,7 +27,7 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

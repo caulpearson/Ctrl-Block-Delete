@@ -10,12 +10,12 @@
         <div class="card bg-dark text-white mb-4" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center mb-4">
             <h2>Post Details</h2>
-              <div>        
+              <div>
                 <textarea class="form-control form-control-lg" rows="4" formControlName="textForm" placeholder="Description, pickup details, etc." name="text"></textarea>
                 <label class="custom-control-label"></label>
                 <div class="row">
                   <div class="col-sm">
-                    <input type="text" class="form-control form-control-lg" formControlName="imageForm" placeholder="Image URL (example.com/image)" name="image">
+                    <input class="form-control form-control-lg" type="file" id="formFileMultiple" multiple />
                   </div>
                   <div class="col-sm">
                     <select class="custom-select d-block w-100 form-control-lg" required="" formControlName="restrictionBox">

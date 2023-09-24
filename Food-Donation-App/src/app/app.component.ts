@@ -32,6 +32,11 @@ export class AppComponent implements OnInit {
     console.log(this.loginForm.controls['username'].value)
   }
 
+  signOut() {
+    this.username = null;
+    this.password = null;
+    this.loggedIn = false;
+  }
 
   onSubmit() {
     this.username = this.loginForm.controls['username'].value;
@@ -42,14 +47,15 @@ export class AppComponent implements OnInit {
     if (this.username == '' || this.password == '') {
       //alert('Login successful!');
       alert('Please enter a username and password.');
-      
+
     } else {
       console.log(this.loginForm.controls['username'].value);
       console.log(this.loginForm.controls['password'].value);
 
       // Navigate to home after successful login
       this.loggedIn = true;
+
+      this.router.navigateByUrl('/feed');
     }
-    
   }
 }

@@ -9,3 +9,14 @@ export interface PostModel {
   ZipCode: number,
   Decision: number
 }
+
+export interface UnclaimedPostModel {
+  time: Date;
+  author: string;
+  type: string;
+  text: string;
+  zipCode: number;
+  profilePictureUrl: string;
+  foodTypePictureUrl: string;
+}
+

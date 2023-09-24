@@ -27,7 +27,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 ShareTable
 <br /><br />
 ## What does your app do?
-ShareTable serves as a bridge between businesses with surplus food and individuals facing food scarcity. Designed with an intuitive interface, businesses can effortlessly create donation posts to offer excess food items, ensuring they don't go to waste. Users can browse the feed, filled with vibrant images and descriptions, to find available donations nearby. With features like category filtering and contact options, connecting donors and recipients has never been easier. The platform not only aids in reducing food wastage but also plays a pivotal role in supporting community members in need.
+~323,000 people in KC may be food insecure due to the pandemic. That's 12.4 percent of the area's population, or one in eight people, according to After the Harvest - Kansas City. ShareTable serves as a bridge between businesses with surplus food and individuals facing food scarcity. Designed with an intuitive interface, businesses can effortlessly create donation posts to offer excess food items, ensuring they don't go to waste. Users can browse the feed, filled with vibrant images and descriptions, to find available donations nearby. With features like category filtering and contact options, connecting donors and recipients has never been easier. The platform not only aids in reducing food wastage but also plays a pivotal role in supporting community members in need.
 
 <br /><br />
 

@@ -23,6 +23,8 @@
   font-style: normal;
 }
 
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 body {
   font-family: 'SofiaSansExtra', sans-serif;
   font-size: 20px;

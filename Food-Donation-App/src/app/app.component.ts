@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './post/login.service';
+import { LoginModel } from 'src/model';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   username!: any;
   password!: any;
   id!: number;
+  pictureUrl!: string;
   loggedIn: boolean = false;
 
 
@@ -55,8 +57,15 @@ export class AppComponent implements OnInit {
       // Navigate to home after successful login
       this.loggedIn = true;
 
-      var response = await this.login.login(this.username, this.password);
+      var response = await this.login.login(this.username, this.password) as LoginModel;
+
+      this.id = response.id;
+      this.pictureUrl = response.pictureUrl;
+
       console.log(response);
+
+      console.log(this.id);
+      console.log(this.pictureUrl);
 
       this.router.navigateByUrl('/feed');
     }

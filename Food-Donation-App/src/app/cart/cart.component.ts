@@ -13,12 +13,14 @@ export class CartComponent implements OnInit{
   
   constructor(private formBuilder:FormBuilder, private http:HttpClient, private appComponent:AppComponent) {}
   userName!: string;
+  id!: number;
 
 
   ngOnInit(): void {
     this.userName = this.appComponent.username;
+    this.id = this.appComponent.id;
 
-    var getURL = "https://fooddonationapi.azurewebsites.net/ClaimedPosts/" + 0;
+    var getURL = "https://fooddonationapi.azurewebsites.net/ClaimedPosts/" + this.id;
 
     console.log(getURL);
 

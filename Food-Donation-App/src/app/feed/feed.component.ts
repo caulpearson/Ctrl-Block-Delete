@@ -27,7 +27,7 @@ export class FeedComponent implements OnInit {
         claimed: false,
         category: element.type,
         categoryColor: 'text-info',
-        title: 'Free Food',
+        title: element.title,
         description: element.text,
         date: element.time.toString(),
         imageUrl: element.foodTypePictureUrl,

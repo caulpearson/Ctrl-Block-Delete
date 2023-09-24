@@ -9,6 +9,7 @@ export interface PostModel {
 
 export interface UnclaimedPostModel {
   time: Date;
+  title: string;
   author: string;
   type: string;
   text: string;

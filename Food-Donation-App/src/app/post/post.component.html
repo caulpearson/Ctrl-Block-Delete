@@ -7,75 +7,74 @@
   </div>
   <!-- Jumbotron -->
 
-  <!-- Post Template -->
-  <div class="container mt-4">
-    <h1>Create Post</h1>
+<!-- Post Template -->
+<div class="container mt-4">
+  <h1>Create Post</h1>
 
-    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
 
-        <div class="card mb-4 p-3">
-            <h3>Post Details</h3>
-            <div class="mb-3">
-                <label for="textForm" class="form-label">Text:</label>
-                <input type="text" class="form-control" id="textForm" formControlName="textForm" placeholder="Enter a description...">
-            </div>
+    <div class="card mb-4 p-3">
+      <h3>Post Details</h3>
+      <div class="mb-3">
+        <label for="textForm" class="form-label">Text:</label>
+        <input type="text" class="form-control" id="textForm" formControlName="textForm"
+               placeholder="Enter a description...">
+      </div>
 
-            <div class="mb-3">
-                <label for="imageForm" class="form-label">Image:</label>
-                <input type="text" class="form-control" id="imageForm" formControlName="imageForm" placeholder="Enter an image description...">
-            </div>
+      <div class="mb-3">
+        <label for="imageForm" class="form-label">Image:</label>
+        <input type="text" class="form-control" id="imageForm" formControlName="imageForm"
+               placeholder="Enter an image description...">
+      </div>
+    </div>
+
+    <div class="card mb-4 p-3">
+      <h3>Options</h3>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="type" formControlName="type" value="vegetarian">
+            <label class="form-check-label">Vegetarian</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="type" formControlName="type" value="bbq">
+            <label class="form-check-label">BBQ</label>
+          </div>
         </div>
-
-        <div class="card mb-4 p-3">
-            <h3>Options</h3>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="vegetarianBox" formControlName="vegetarianBox">
-                        <label class="form-check-label" for="vegetarianBox">Vegetarian</label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="bbqBox" formControlName="bbqBox">
-                        <label class="form-check-label" for="bbqBox">BBQ</label>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="deliBox" formControlName="deliBox">
-                        <label class="form-check-label" for="deliBox">Deli</label>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input class="form-check-input" type="checkbox" id="bakeryBox" formControlName="bakeryBox">
-                        <label class="form-check-label" for="bakeryBox">Bakery</label>
-                    </div>
-                </div>
-            </div>
+        <div class="col-sm-6">
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="type" formControlName="type" value="deli">
+            <label class="form-check-label">Deli</label>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="type" formControlName="type" value="bakery">
+            <label class="form-check-label">Bakery</label>
+          </div>
         </div>
-        <div class="mb-4">
-            <button type="submit" class="btn btn-primary col-lg-4" (click)="onSubmit(); toggleModal()">Post</button>
-        </div>
-    </form>
+      </div>
+    </div>
+    <div class="mb-4">
+      <button type="submit" class="btn btn-primary col-lg-4" (click)="onSubmit(); toggleModal()">Post</button>
+    </div>
+  </form>
 </div>
 <!-- Post Template -->
 
 
 <!-- Modal -->
 <div *ngIf="showModal" class="modal show d-block" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Thank You!</h5>
-          <button type="button" class="close" (click)="toggleModal(); $event.stopPropagation();">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-          Thank you for your generous donation! Your contribution will make a difference in someone's life.
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="toggleModal(); $event.stopPropagation();">Close</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thank You!</h5>
+      </div>
+      <div class="modal-body">
+        Thank you for your generous donation! Your contribution will make a difference in someone's life.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="toggleModal(); $event.stopPropagation();">Close</button>
       </div>
     </div>
   </div>
-  <div *ngIf="showModal" class="modal-backdrop fade show"></div>
+</div>
+<div *ngIf="showModal" class="modal-backdrop fade show"></div>

@@ -5,9 +5,7 @@ import {FeedComponent} from "./feed/feed.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
 
 const routes: Routes = [
-  { path: '', component: FeedComponent},
-  { path: 'post', component: PostComponent },
-  { path: 'sign-in', component: SignInComponent}
+  { path: 'post', component: PostComponent }
 ];
 
 @NgModule({

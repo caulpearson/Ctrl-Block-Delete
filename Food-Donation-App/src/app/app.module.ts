@@ -9,6 +9,7 @@ import { PostComponent } from './post/post.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
     FeedComponent,
     PostComponent,
     CartComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     HttpClientModule,

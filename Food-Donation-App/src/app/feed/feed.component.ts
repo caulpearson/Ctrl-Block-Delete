@@ -27,7 +27,7 @@ export class FeedComponent implements OnInit {
         claimed: false,
         category: element.type,
         categoryColor: 'text-info',
-        title: element.title,
+        title: "Free Food",
         description: element.text,
         date: element.time.toString(),
         imageUrl: element.foodTypePictureUrl,
@@ -35,10 +35,7 @@ export class FeedComponent implements OnInit {
         profileName: element.author
         })
     });
-
-
   }
-
 
   async getUnclaimed () : Promise<any> {
     

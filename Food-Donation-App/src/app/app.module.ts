@@ -8,13 +8,15 @@ import { FeedComponent } from './feed/feed.component';
 import { PostComponent } from './post/post.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FeedComponent,
     PostComponent,
-    CartComponent
+    CartComponent,
+    AboutComponent
   ],
   imports: [
     HttpClientModule,

@@ -32,6 +32,12 @@ export class AppComponent implements OnInit {
     console.log(this.loginForm.controls['username'].value)
   }
 
+  signOut() {
+    this.username = null;
+    this.password = null;
+    this.loggedIn = false;
+  }
+
   onSubmit() {
     this.username = this.loginForm.controls['username'].value;
 

@@ -7,3 +7,14 @@ export interface Post {
   ProfilePictureUrl: string;
   FoodTypePictureURL: string;
 }
+
+export interface UnclaimedPostModel {
+  time: Date;
+  author: string;
+  type: string;
+  text: string;
+  zipCode: number;
+  profilePictureUrl: string;
+  foodTypePictureUrl: string;
+}
+

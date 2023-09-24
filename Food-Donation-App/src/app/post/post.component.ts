@@ -33,7 +33,6 @@ export class PostComponent implements OnInit {
   })
 
   toggleModal() {
-    console.log("Toggling modal"); // Log to check if the function is called
     this.showModal = !this.showModal;
   }
 
@@ -50,6 +49,8 @@ export class PostComponent implements OnInit {
     const body = "{\"time\": \"" + date + "\",\"author\": \"" + this.userName + "\",\"type\": \"" + type + "\",\"text\": \"" + text + "\",\"profilePicture\": \"string\",\"image\": \"" + image + "\",\"zipCode\": 64017,\"claimant\": 0}";
     console.log(body);
     //return this.http.post(this.url + 'people', body,{'headers':headers})
+
+
   }
 
   getProfilePicture() {

@@ -1,5 +1,5 @@
 export interface PostModel {
-  time: Date;
+  time: string;
   author: string;
   type: string;
   text: string;
@@ -9,6 +9,7 @@ export interface PostModel {
 
 export interface UnclaimedPostModel {
   time: Date;
+  title: string;
   author: string;
   type: string;
   text: string;

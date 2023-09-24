@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from '../app.component';
+import { PostModel } from 'src/model';
 
 declare var bootstrap: any;
 
@@ -12,7 +13,7 @@ declare var bootstrap: any;
 })
 export class PostComponent implements OnInit {
 
-  postURL: string = "https://fooddonationapi.azurewebsites.net/Post";
+  postURL: string = "https://fooddonationapi.azurewebsites.net/CreatePost";
   getByAuthorURL: string = "";
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private appComponent: AppComponent) {
@@ -32,9 +33,9 @@ export class PostComponent implements OnInit {
   }
 
   postForm = this.formBuilder.group({
-    textForm: this.formBuilder.control(''),
-    imageForm: this.formBuilder.control(''),
-    type: this.formBuilder.control('')
+    textForm: this.formBuilder.control('',{nonNullable:true}),
+    imageForm: this.formBuilder.control('',{nonNullable:true}),
+    type: this.formBuilder.control('',{nonNullable:true})
   })
 
   toggleModal() {
@@ -51,11 +52,32 @@ export class PostComponent implements OnInit {
     var zipcode = this.getZipCode();
 
     const headers = {'content-type': 'application/json'}
-    const body = "{\"time\": \""+ date +"\",\"author\": \""+ this.userName + "\",\"type\": \""+ type +"\",\"text\": \""+ text +"\",\"zipCode\": 64017,\"claimant\": -1}"
-    console.log(body);
+    //const body = "{\"time\": \""+ date +"\",\"author\": \""+ this.userName + "\",\"type\": \""+ type +"\",\"text\": \""+ text +"\",\"zipCode\": 64017,\"claimant\": -1}"
+    //console.log(body);
     
-    console.log(this.http.post(this.postURL, body,{ headers }));
+    //console.log(this.http.post(this.postURL, body,{ headers }));
+
+
+
+
+
+
+    const postModel: PostModel =  {
+      text: text,
+      time: date,
+      author: this.userName,
+      type: type,
+      zipCode: 64017,
+      claimant: -1
+    };
+
+    console.log(this.http.post(this.postURL, JSON.stringify(postModel),{ headers }));
+    
+
+    // console.log(this.http.post(this.postURL, JSON.stringify(this.postModel),{ headers }));
+
   }
+  
 
   getProfilePicture() {
     var response = this.http.get(this.getByAuthorURL);

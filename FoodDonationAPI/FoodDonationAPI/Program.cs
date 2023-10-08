@@ -61,7 +61,7 @@ app.MapGet("/UnclaimedPosts", () => {
     using var conn = new SqlConnection(connectionString);
     conn.Open();
 
-    var command = new SqlCommand("SELECT po.Time, po.Author, po.Type, po.Text, po.ZipCode, pr.PictureUrl, ft.PictureUrl FROM Post po left join Profile pr on po.Author = pr.name left join FoodType ft on po.Type = ft.Name where Claimant = -1", conn);
+    var command = new SqlCommand("SELECT po.Time, po.Author, po.Type, po.Text, po.ZipCode, pr.PictureUrl, ft.PictureUrl, po.Title, po.ID FROM Post po left join Profile pr on po.Author = pr.name left join FoodType ft on po.Type = ft.Name where Claimant = -1", conn);
     using SqlDataReader reader = command.ExecuteReader();
 
     if (reader.HasRows)
@@ -77,7 +77,9 @@ app.MapGet("/UnclaimedPosts", () => {
                     Text = reader.GetString(3),
                     ZipCode = reader.GetInt32(4),
                     ProfilePictureUrl = reader.GetString(5),
-                    FoodTypePictureUrl = reader.GetString(6)
+                    FoodTypePictureUrl = reader.GetString(6),
+                    Title = reader.GetString(7),
+                    Id = reader.GetInt32(8)
                 }
             );
         }
@@ -94,7 +96,7 @@ app.MapGet("/ClaimedPosts/{id}", (int id) => {
     using var conn = new SqlConnection(connectionString);
     conn.Open();
 
-    var command = new SqlCommand("SELECT po.Time, po.Author, po.Type, po.Text, po.ZipCode, pr.PictureUrl, ft.PictureUrl FROM Post po left join Profile pr on po.Author = pr.name left join FoodType ft on po.Type = ft.Name where Claimant = @id", conn);
+    var command = new SqlCommand("SELECT po.Time, po.Author, po.Type, po.Text, po.ZipCode, pr.PictureUrl, ft.PictureUrl, po.Title, po.ID FROM Post po left join Profile pr on po.Author = pr.name left join FoodType ft on po.Type = ft.Name where Claimant = @id", conn);
     command.Parameters.Clear();
     command.Parameters.AddWithValue("@id", id);
 
@@ -113,7 +115,9 @@ app.MapGet("/ClaimedPosts/{id}", (int id) => {
                     Text = reader.GetString(3),
                     ZipCode = reader.GetInt32(4),
                     ProfilePictureUrl = reader.GetString(5),
-                    FoodTypePictureUrl = reader.GetString(6)
+                    FoodTypePictureUrl = reader.GetString(6),
+                    Title = reader.GetString(7),
+                    Id = reader.GetInt32(8)
                 }
             );
         }
@@ -155,10 +159,12 @@ app.MapPost("/CreatePost", (PostModel post) => {
     conn.Open();
 
     var command = new SqlCommand(
-        "INSERT INTO Post (Time, Author, Type, Text, Zipcode, Claimant) VALUES (@time, @author, @type, @text, @zipCode, @claimant)",
+        "INSERT INTO Post (Time, Author, Type, Text, Zipcode, Claimant, Title) VALUES (@time, @author, @type, @text, @zipCode, @claimant, @title)",
         conn);
 
     command.Parameters.Clear();
+    //need title added here
+    command.Parameters.AddWithValue("@title", post.Title);
     command.Parameters.AddWithValue("@time", post.Time);
     command.Parameters.AddWithValue("@author", post.Author);
     command.Parameters.AddWithValue("@type", post.Type);
@@ -204,6 +210,23 @@ app.MapPost("/UpdatePost", (GetModel post) => {
     using SqlDataReader reader = command.ExecuteReader();
 })
 .WithName("UpdatePost")
+.WithOpenApi();
+
+app.MapPost("/ClaimPost", (ClaimPostModel claimModel) => {
+    using var conn = new SqlConnection(connectionString);
+    conn.Open();
+
+    var command = new SqlCommand(
+         "Update Post Set Claimant = @Claimant Where ID = @Id;",
+         conn);
+
+    command.Parameters.Clear();
+    command.Parameters.AddWithValue("@Claimant", claimModel.ProfileId);
+    command.Parameters.AddWithValue("@Id", claimModel.PostId);
+
+    using SqlDataReader reader = command.ExecuteReader();
+})
+.WithName("ClaimPost")
 .WithOpenApi();
 
 app.MapGet("/Profiles", () => {
@@ -256,7 +279,7 @@ app.MapPost("/Login", (LoginProfile profile) => {
     conn.Open();
 
     var command = new SqlCommand(
-         "SELECT ID, Name, PictureUrl FROM Profile WHERE Name = @name and Password = @password",
+         "SELECT ID, Name, PictureUrl, Business FROM Profile WHERE Name = @name and Password = @password",
          conn);
 
     command.Parameters.Clear();
@@ -271,7 +294,7 @@ app.MapPost("/Login", (LoginProfile profile) => {
             getProfile.Id = reader.GetInt32(0);
             getProfile.Name = reader.GetString(1);
             getProfile.PictureUrl = reader.GetString(2);
-
+            getProfile.Business = reader.GetBoolean(3);
         }
     }
     return getProfile;
@@ -284,6 +307,7 @@ app.Run();
 public class PostModel
 {
     public DateTime Time { get; set; }
+    public string Title { get; set; }
     public string Author { get; set; }
     public string Type { get; set; }
     public string Text { get; set; }
@@ -293,6 +317,7 @@ public class PostModel
 
 public class UnclaimedPostModel
 {
+    public string Title { get; set; }
     public DateTime Time { get; set; }
     public string Author { get; set; }
     public string Type { get; set; }
@@ -300,6 +325,7 @@ public class UnclaimedPostModel
     public int ZipCode { get; set; }
     public string ProfilePictureUrl { get; set; }
     public string FoodTypePictureUrl { get; set; }
+    public int Id { get; set; }
 }
 
 public class GetModel
@@ -318,6 +344,7 @@ public class GetProfile
     public int Id { get; set; }
     public string Name { get; set; }
     public string PictureUrl { get; set; }
+    public bool Business { get; set; }
 }
 
 public class LoginProfile
@@ -330,4 +357,10 @@ public class PostProfile
     public string Name { get; set; }
     public string? Password { get; set; }
     public string? PictureUrl { get; set; }
+}
+
+public class ClaimPostModel
+{
+    public int ProfileId { get; set; }
+    public int PostId { get; set; }
 }

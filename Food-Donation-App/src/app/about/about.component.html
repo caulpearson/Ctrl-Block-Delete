@@ -2,7 +2,7 @@
     <div id="intro" class="p-5 text-center bg-light">
         <h1 class="mb-3 h2">The Calling</h1>
         <p class="mb-3">Our dedication to reducing food waste, driving compassion for communities in need</p>
-        <a class="btn btn-primary m-2" routerLink="/post" role="button">Become a Donor</a>
+        <a class="btn btn-primary m-2" routerLink="/post" role="button" *ngIf="this.business">Become a Donor</a>
         <a class="btn btn-primary m-2" routerLink="/feed" role="button">Check out Listings</a>
     </div>
     <!-- Jumbotron -->

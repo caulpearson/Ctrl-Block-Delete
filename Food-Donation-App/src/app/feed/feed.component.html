@@ -2,7 +2,7 @@
 <div id="intro" class="p-5 text-center bg-light">
   <h1 class="mb-3 h2">Impact</h1>
   <p class="mb-3">Be a donor, and share a table with our community</p>
-  <a class="btn btn-primary m-2" routerLink="/post" role="button">Become a Donor</a>
+  <a class="btn btn-primary m-2" routerLink="/post" role="button" *ngIf="this.business">Become a Donor</a>
   <a class="btn btn-primary m-2" routerLink="/about" role="button">About our Mission</a>
 </div>
 <!-- Jumbotron -->
@@ -14,7 +14,7 @@
     <section>
       <div class="row gx-lg-5">
         <ng-container *ngFor="let item of newsItems">
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0" *ngIf="!item.claimed">
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
           <!-- News block -->
           <div>
             <!-- Featured image -->
@@ -27,7 +27,8 @@
               <button class="interest-button btn btn-dark position-absolute top-50 start-50 translate-middle"
                       (click)="claimItem(item)"
                       (mouseover)="showButton = true"
-                      (mouseleave)="showButton = false">
+                      (mouseleave)="showButton = false"
+                      *ngIf="!this.business">
                 Claim Item
               </button>
 
@@ -39,7 +40,7 @@
             <!-- Article data -->
             <div class="row mb-3">
               <div class="col-6">
-                <a href="" [ngClass]="item.categoryColor">
+                <a href="">
                   {{ item.category }}
                 </a>
               </div>
@@ -66,21 +67,5 @@
         </ng-container>
       </div>
     </section>
-
-    <!-- Pagination -->
-    <nav class="my-4" aria-label="...">
-      <ul class="pagination pagination-circle justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active" aria-current="page">
-          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav>
   </div>
 </main>

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from '../app.component';
+import { UnclaimedPostModel } from '../models/UnclaimedPostModel';
+import { Observable, tap } from 'rxjs';
+import { FeedModel } from '../models/FeedModel';
 
 @Component({
   selector: 'app-cart',
@@ -10,36 +13,40 @@ import { AppComponent } from '../app.component';
 })
 export class CartComponent implements OnInit{
 
-  
+
   constructor(private formBuilder:FormBuilder, private http:HttpClient, private appComponent:AppComponent) {}
   userName!: string;
   id!: number;
 
+  newsItems: FeedModel[] = [];
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.userName = this.appComponent.username;
     this.id = this.appComponent.id;
 
-    var getURL = "https://fooddonationapi.azurewebsites.net/ClaimedPosts/" + this.id;
-
-    console.log(getURL);
-
-
-    //this.http.get(getURL);
+    // let data = await this.getClaimedPosts() as UnclaimedPostModel[];
+    // console.log("claimed posts: " + data);
+    await this.getClaimedPosts();
   }
 
+  async getClaimedPosts(): Promise<any>{
+    var getURL = "https://fooddonationapi.azurewebsites.net/ClaimedPosts/" + this.id;
+    var claimed = await this.http.get(getURL).toPromise() as UnclaimedPostModel[];
 
-  newsItems = [
-    {
-      category: 'Bakery',
-      categoryColor: 'text-info',
-      title: 'Baked Daily, Available for All',
-      description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
-      date: '09.24.2023',
-      imageUrl: '/assets/logos/bagels_01.png',
-      profileImage: '/assets/logos/bakery_logo.png',
-      profileName: 'B.B Bakery',
-    }
-  ]
+    this.newsItems = [];
+    claimed.forEach(element => {
 
+      this.newsItems.push(
+        {
+        category: element.type,
+        title: element.title,
+        description: element.text,
+        date: element.time.toString(),
+        imageUrl: element.foodTypePictureUrl,
+        profileImage: element.profilePictureUrl,
+        profileName: element.author,
+        Id: element.id
+        })
+    });
+  }
 }

@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UnclaimedPostModel } from 'src/model';
+import { UnclaimedPostModel } from '../models/UnclaimedPostModel';
+import { FeedModel } from '../models/FeedModel';
+import { ClaimPostModel } from '../models/ClaimPostModel';
 
 @Component({
   selector: 'app-feed',
@@ -17,90 +19,60 @@ export class FeedComponent implements OnInit {
 
   showButton = false;
 
-  async ngOnInit(): Promise<void> {
-    var unclaimed = await this.getUnclaimed() as UnclaimedPostModel[];
+  newsItems: FeedModel[] = [];
+  business:boolean = false;
+  userId:number = -1;
+
+  async ngOnInit() {
+    let storedBusiness = localStorage.getItem("business");
+    console.log(storedBusiness);
+    this.business = storedBusiness != undefined ? JSON.parse(storedBusiness) : false;
+    console.log(this.business);
+    let storedUserId = localStorage.getItem("id");
+    console.log(storedUserId);
+    this.userId = storedUserId != undefined ? JSON.parse(storedUserId) as number : -1;
+
+    await this.getUnclaimed();
+  }
+
+  async getUnclaimed () {
+    var unclaimed = await this.http.get(this.getURL).toPromise() as UnclaimedPostModel[];
+    console.log("received unclaimed: ");
     console.log(unclaimed);
 
+    this.newsItems = [];
     unclaimed.forEach(element => {
       this.newsItems.push(
-        {id: 0,
-        claimed: false,
+        {
         category: element.type,
-        categoryColor: 'text-info',
-        title: "Free Food",
+        title: element.title,
         description: element.text,
         date: element.time.toString(),
         imageUrl: element.foodTypePictureUrl,
         profileImage: element.profilePictureUrl,
-        profileName: element.author
-        })
+        profileName: element.author,
+        Id: element.id
+        });
     });
   }
 
-  async getUnclaimed () : Promise<any> {
-    
-    return await this.http.get(this.getURL).toPromise() as Promise<any>;
-  }
-
-
-  newsItems = [
-    {
-      id: 0,
-      claimed: false,
-      category: 'Bakery',
-      categoryColor: 'text-info',
-      title: 'Baked Daily, Available for All',
-      description: 'Our unsold baked goods are up for donation. Every bread and pastry nourishes someone in need',
-      date: '09.24.2023',
-      imageUrl: '/assets/logos/bagels_01.png',
-      profileImage: '/assets/logos/bakery_logo.png',
-      profileName: 'B.B Bakery',
-    },
-    {
-      id: 0,
-      claimed: false,
-      category: 'Deli',
-      categoryColor: 'text-info',
-      title: 'Gourmet Donations for the Community',
-      description: 'We are offering our deli surpluses to those in need. Join us at DnD Deli in this noble cause',
-      date: '09.22.2023',
-      imageUrl: '/assets/logos/deli_02.png',
-      profileImage: '/assets/logos/deli_logo.png',
-      profileName: 'DnD Deli',
-    },
-    {
-      id: 0,
-      claimed: false,
-      category: 'Vegetarian',
-      categoryColor: 'text-info',
-      title: 'From our Farms, with Love',
-      description: 'Our excess vegetables are fresh, organic, and ready for donation. Together, lets reduce hunger',
-      date: '09.20.2023',
-      imageUrl: '/assets/logos/vegetables_01.png',
-      profileImage: '/assets/logos/vegetable_logo.png',
-      profileName: 'The Greenhouse',
-    },
-    {
-      id: 0,
-      claimed: false,
-      category: 'BBQ',
-      categoryColor: 'text-info',
-      title: 'Grilled with Care, Shared with Love',
-      description: 'We at BB Smokehouse are donating our BBQ leftovers. A little flavor can make a big difference',
-      date: '09.18.2023',
-      imageUrl: '/assets/logos/bbq_sandwiches_02.png',
-      profileImage: '/assets/logos/bbq_logo_2.png',
-      profileName: 'BB Smokehouse',
-    },
-    // ... other news items
-  ];
-  
   lastAssignedId: number = 0;
 
-  claimItem(item: any): void {
-    item.claimed = true;
-    this.lastAssignedId++;
-    item.id = this.lastAssignedId;
+  async claimItem(item: FeedModel) {
+    console.log("selected item: " + item);
+    await this.claimRequest(this.userId, item.Id);
+    await this.getUnclaimed();
+  }
+
+  async claimRequest(profileId: number, postId: number) : Promise<any>{
+
+    var headers = {'Content-Type' : 'application/json' };
+    var body: ClaimPostModel =  {
+      ProfileId: profileId,
+      PostId: postId
+    }
+    console.log(body);
+    return await this.http.post("https://fooddonationapi.azurewebsites.net/ClaimPost", JSON.stringify(body), {headers}).toPromise() as Promise<any>;
   }
 
 }

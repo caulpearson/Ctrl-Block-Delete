@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LoginRequestModel } from '../models/LoginRequestModel';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +10,17 @@ export class LoginService {
 
   constructor(private httpclient:HttpClient) { }
 
- 
 
 
-  async login(usrnm: string, passwd: string) : Promise<any>{
+
+  async login(username: string, password: string) : Promise<any>{
 
     var headers = {'Content-Type' : 'application/json' };
-    var body = "{\"name\":\""+ usrnm +"\", \"password\":\""+ passwd +"\"}";
-    return await this.httpclient.post("https://fooddonationapi.azurewebsites.net/Login", body, {headers}).toPromise() as Promise<any>;
+    var body: LoginRequestModel =  {
+      name: username,
+      password: password
+    }
+    return await this.httpclient.post("https://fooddonationapi.azurewebsites.net/Login", JSON.stringify(body), {headers}).toPromise() as Promise<any>;
   }
 
 

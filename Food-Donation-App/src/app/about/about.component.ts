@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-
+  business:boolean = false;
+  ngOnInit(): void {
+    let storedBusiness = localStorage.getItem("business")
+    this.business = storedBusiness != undefined ? JSON.parse(storedBusiness) : false;
+  }
 }
